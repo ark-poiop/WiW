@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --text: #000000;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #3b82f6;
+  --overlay: rgba(0, 0, 0, 0.1);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
