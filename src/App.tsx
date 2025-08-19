@@ -106,6 +106,13 @@ export default function App() {
             </div>
           </Rnd>
         ))}
+
+        {/* 푸터 */}
+        <div className={`absolute bottom-4 left-4 z-20 rounded-lg px-4 py-2 shadow-lg ${theme === 'dark' ? 'bg-gray-700/90 text-white' : 'bg-white/90 text-gray-800'} backdrop-blur-sm`}>
+          <p className="text-sm">
+            의견 수렴 중입니다. <span className="text-blue-600 font-medium">파란 버튼</span>을 통해 사용후기를 남겨주세요
+          </p>
+        </div>
       </main>
 
       {/* Open URL Modal */}

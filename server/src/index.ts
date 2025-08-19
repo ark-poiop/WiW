@@ -21,9 +21,8 @@ db.exec(`
 CREATE TABLE IF NOT EXISTS feedback (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   created_at TEXT NOT NULL,
-  name TEXT,
-  email TEXT,
-  message TEXT NOT NULL,
+  rating INTEGER NOT NULL,
+  message TEXT,
   ip TEXT,
   user_agent TEXT
 );
@@ -36,20 +35,19 @@ const clientIP = (req: any) =>
 // 저장
 app.post("/api/feedback", (req, res) => {
   try {
-    const { name = "", email = "", message = "" } = req.body || {};
-    if (typeof message !== "string" || message.trim().length < 1) {
-      return res.status(400).json({ ok: false, error: "message required" });
+    const { rating = 0, message = "" } = req.body || {};
+    if (typeof rating !== "number" || rating < 1 || rating > 5) {
+      return res.status(400).json({ ok: false, error: "rating must be 1-5" });
     }
-    if (message.length > 5000) {
+    if (typeof message === "string" && message.length > 5000) {
       return res.status(400).json({ ok: false, error: "message too long" });
     }
     const info = db.prepare(`
-      INSERT INTO feedback (created_at, name, email, message, ip, user_agent)
-      VALUES (?, ?, ?, ?, ?, ?)
+      INSERT INTO feedback (created_at, rating, message, ip, user_agent)
+      VALUES (?, ?, ?, ?, ?)
     `).run(
       nowISO(),
-      String(name).trim(),
-      String(email).trim(),
+      rating,
       String(message).trim(),
       clientIP(req),
       String(req.headers["user-agent"] || "")
