@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Rnd } from 'react-rnd';
+import FeedbackButton from './components/FeedbackButton';
 
 export default function App() {
   const [isOpenUrlModalOpen, setIsOpenUrlModalOpen] = useState(false);
@@ -228,7 +229,7 @@ export default function App() {
           onClick={() => setIsOpenUrlModalOpen(true)}
           className="h-12 w-12 rounded-full shadow-lg bg-red-500 hover:bg-red-600 transition-all duration-200 flex items-center justify-center active:scale-[.98] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/20"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          <svg xmlns="http://www/w3.org/2000/svg" width="24" height="24"
                viewBox="0 0 24 24" fill="none" stroke="currentColor"
                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                className="lucide lucide-plus text-white" aria-hidden="true">
@@ -242,7 +243,7 @@ export default function App() {
           onClick={() => setIsSettingsModalOpen(true)}
           className="h-12 w-12 rounded-full shadow-lg bg-green-500 hover:bg-green-600 transition-all duration-200 flex items-center justify-center active:scale-[.98] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/20"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          <svg xmlns="http://www/w3.org/2000/svg" width="24" height="24"
                viewBox="0 0 24 24" fill="none" stroke="currentColor"
                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                className="lucide lucide-settings text-white" aria-hidden="true">
@@ -251,6 +252,8 @@ export default function App() {
           </svg>
         </button>
       </div>
+
+      <FeedbackButton />
     </div>
   );
 }
